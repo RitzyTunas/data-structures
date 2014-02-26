@@ -10,17 +10,22 @@ var makeQueue = function(){
   // Implement the methods below
 
   instance.enqueue = function(value){
-    size++;
-    storage[size-1] = value;
+    storage[size++] = value;
   };
 
   instance.dequeue = function(){
     if (size !== 0) {
-      var item = storage[size-1];
-      delete storage[size-1];
+      var item = storage[0];
+
+      for (var i=0; i < size; i++){
+        storage[i] = storage[i+1]; 
+        delete storage[i+1];
+      }
       size--;
+      return item;
     }
-    return item;  
+
+    return size;  
   };
 
   instance.size = function(){
