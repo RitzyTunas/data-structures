@@ -1,4 +1,41 @@
 var makeQueue = function(){
+  // Hey! Copy your code from src/functional/queue.js and paste it here
+  var instance = {};
+
+  // Use an object with numeric keys to store values
+  var storage = {};
+  
+  // Keep track of storage size
+  //var size = 0;
+  var start = -1;
+  var end = -1;
+
+  // Implement the methods below
+
+  instance.enqueue = function(value){
+    end++;
+    storage[end] = value;
+  };
+
+  instance.dequeue = function(){
+    if (instance.size()) {
+      start++
+    }  
+    var result = storage[start];
+    delete storage[start];
+    return result; 
+  };
+
+  instance.size = function(){
+    return end - start;
+  };
+
+  return instance;
+};
+
+
+/* Original Solution
+var makeQueue = function(){
   var instance = {};
 
   // Use an object with numeric keys to store values
@@ -25,7 +62,7 @@ var makeQueue = function(){
       return item;
     }
 
-    return size;  
+    //return size;  
   };
 
   instance.size = function(){
@@ -34,3 +71,4 @@ var makeQueue = function(){
 
   return instance;
 };
+*/
